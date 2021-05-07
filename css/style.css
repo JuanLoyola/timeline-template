@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+body,
+html,
+input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12pt;
+}
+
+body {
+  margin: 0 10rem;
+}
+
+.reservations {
+  width: 100%;
+  padding: 20px 0;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 7px 10px -2px #a8a5a8;
+  -moz-box-shadow: 0px 7px 10px -2px #a8a5a8;
+  box-shadow: 0px 7px 10px -2px #a8a5a8;
+}
+
+.title {
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 25px 0 0 50px;
+}
+
+.row {
+  display: flex;
+  padding: 0 0 20px 20px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-flow: row nowrap;
+}
+.inputArea {
+  height: 40px;
+  border-radius: 5px;
+  -webkit-box-shadow: -2px 10px 5px -8px #a8a5a8;
+  -moz-box-shadow: -2px 10px 5px -8px #a8a5a8;
+  box-shadow: -2px 10px 5px -8px #a8a5a8;
+}
+
+.inputName {
+  width: 350px;
+  padding: 0 20px;
+  margin: 0 30px 0 30px;
+}
+
+.inputDate {
+  text-align: center;
+  margin: 0 30px 0 0;
+}
+
+.inputHour {
+  width: 110px;
+  text-align: center;
+  margin: 0 30px 0 0;
+}
+
+.btnSave {
+  width: 160px;
+  height: 40px;
+  background: #777777;
+  border-radius: 8px;
+  color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.btnSave:hover {
+  background: #979797;
+}
+
+.info {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}
+
+.infoitem {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #818181;
+  padding: 0 35px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.itemName {
+  width: 550px;
+  padding: 0 0 0 35px; 
+}
+
+.rowItems {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap nowrap;
+  width: 640px;
+}
+
+.itemHour {
+  margin-right: 30px;
+}
+
+.itemTrash {
+  width: 40px;
+  text-align: center;
+}
+
+.rowList {
+  padding: 0 35px;
+}
+
+.itemList {
+  padding: 10px 0;
+  border-top: 1px solid grey;
+  text-transform: capitalize;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+
+.names {
+  width: 500px;
+}
+
+.time {
+  text-align: end;
+}
+
+.trash {
+  cursor:pointer;
+  color: #8b8a8a;
+}
+
+#visualization {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  display: table-cell;
+  vertical-align: middle;
+  bottom: -50px;
+  right: 0;
+  margin: 10px;
+  z-index: 9999;
+}
+
+.range {
+  margin: -12px 12px 0 0;
+  background: #333;
+}
+
+label,
+input {
+  vertical-align: middle;
+  padding: 0px;
+  margin: 0px;
+  height: 20px;
+  margin-top: -12px;
+  margin-right: 12px;
+}
+
+.buttons-menu {
+  background-color: #555;
+  color: #fff;
+  padding: 4px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.buttons-menu:hover {
+  opacity: 0.9;
+}
+
+
+/* responsive only desktop */
+
+@media screen and (max-width: 1366px) {
+  .inputName {
+    width: 150px;
+  }
+  .names {
+    width: 170px;
+  }
+}

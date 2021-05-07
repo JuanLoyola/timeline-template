@@ -1,0 +1,179 @@
+<html>
+
+<head>
+    <title>Timeline</title>
+    <!-- note: moment.js must be loaded before vis.js, else vis.js uses its embedded version of moment.js -->
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/full-style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <section class="reservations">
+            <div class="title">
+                <p>{{reservTitle}}</p>
+            </div>
+            <div class="row">
+                <input
+                    class="inputArea inputName"
+                    type="text"
+                    name="name"
+                    placeholder="Nombre"
+                    v-model="newNameTitle"
+                    @keyup.enter="addName"
+                    />
+                <input class="inputArea inputDate" type="date" placeholder="30/9/2019"/>
+                <input
+                    class="inputArea inputHour"
+                    type="time"
+                    placeholder="12:00"
+                    v-model="newTimeFrom"
+                    /> 
+                <input
+                    class="inputArea inputHour"
+                    type="time"
+                    placeholder="13:00"
+                    v-model="newTimeTo"
+                    />
+                <button
+                    class="btnSave"
+                    type="submit"
+                    @click="addName();addTimeTo();addTimeFrom()">
+                    <p>{{btnSave}}</p>
+                </button>
+            </div>
+        </section>
+
+        <!-- Reservations end -->
+
+        <h3>
+            <b>{{time}}</b>
+        </h3>
+
+        <div id="visualization">
+            <div class="menu">
+                <input
+                    style="display:none;"
+                    id="sliderZoom"
+                    type="range"
+                    class="range"
+                    name="a" min="-1"
+                    max="1" step="0.1"
+                    value="0" />
+                <i class="material-icons dp48 buttons-men" id="fit">home</i>
+                <i class="material-icons dp48 buttons-menu" id="moveLeft">arrow_back</i>
+                <i class="material-icons dp48 buttons-menu" id="moveRight">arrow_forward</i>
+            </div>
+        </div>
+            <!-- Timeline end -->
+        <div class="info">
+            <p class="infoItem itemName">Nombre</p>
+            <div class="rowItems">
+                <p class="infoItem itemHour">Horario <span class="material-icons">arrow_upward</span></p>
+                <p class="infoItem itemTrash">Acción</p>
+            </div>
+        </div>
+
+        <div 
+            class="rowList"
+            v-for="name in names"
+            :key="name.id">
+            <div
+                class="itemList"
+                >
+                <div class="names">
+                    {{ name.title }}
+                </div>
+                <div class="time">
+                    de {{name.timeFrom}} a {{name.timeTo}}
+                </div>
+                <div
+                    class="trash material-icons"
+                    @click="deleteName(name.id)"
+                    >
+                    delete
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <!-- My Js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script> 
+    var app = new Vue ({
+        el: '#app',
+        data: {
+            time: 'Agenda de reservas',
+            reservTitle: 'Reservation',
+            btnSave: 'Guardar',
+            newNameTitle: '',
+            newTimeFrom: '',
+            newTimeTo: '',
+            names: [
+                {
+                    id: 1,
+                    title: 'Alvarado, Eduardo Alfonso',
+                    timeFrom: '9:30',
+                    timeTo: '10:30'
+                },
+                {   
+                    id: 2,
+                    title: 'Acuña Lopéz, Juliana',
+                    timeFrom: '11:00',
+                    timeTo: '12:30'
+                },
+                {
+                    id: 3,
+                    title: 'Arenales, Ingrid Lorena',
+                    timeFrom: '12:30',
+                    timeTo: '13:30'
+                },
+                {
+                    id: 4,
+                    title: 'Barreto Ruíz, Aldana',
+                    timeFrom: '13:30',
+                    timeTo: '16:00'
+                },
+                {
+                    id: 5,
+                    title: 'Buitrago Lozano, Daniel Esteban',
+                    timeFrom: '16:30',
+                    timeTo: '17:30'
+                },
+                {
+                    id: 6,
+                    title: 'Delgado, Ángel David',
+                    timeFrom: '17:30',
+                    timeTo: '19:00'
+                }
+            ]
+        },
+        methods: {
+            addName() {
+                let newName = {
+                    id: Date.now(),
+                    title: this.newNameTitle,
+                    timeFrom: this.newTimeFrom,
+                    timeTo: this.newTimeTo
+                }
+                this.names.push(newName)
+                this.newNameTitle = ''
+                this.newTimeFrom = ''
+                this.newTimeTo = ''
+            },
+            deleteName(id) {
+                this.names = this.names.filter(names => names.id !== id)
+            }
+        }
+    })
+    </script>
+    <script src="js/moment.js"></script>
+    <script src="js/vis.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
